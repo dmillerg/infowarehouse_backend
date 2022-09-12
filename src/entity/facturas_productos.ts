@@ -1,4 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { type } from "os"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
+import { Factura } from "./facturas"
+import { Producto } from "./producto"
 
 @Entity()
 export class Factura_Producto {
@@ -6,10 +9,10 @@ export class Factura_Producto {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
+    @ManyToOne(type => Factura)
     no_factura: string
 
-    @Column()
+    @ManyToOne(type => Producto)
     codigo_producto: string
 
     @Column()

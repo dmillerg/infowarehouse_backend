@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, OneToOne, ManyToOne } from "typeorm"
+import { Factura } from "./facturas"
 
 @Entity()
 export class Informe_Recepcion {
@@ -24,7 +25,7 @@ export class Informe_Recepcion {
     @Column()
     entidad_suministradora: string
 
-    @Column()
+    @OneToOne(type => Factura)
     factura: string
 
     @Column()

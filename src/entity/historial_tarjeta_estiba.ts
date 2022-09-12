@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn } from "typeorm"
 
 @Entity()
 export class Historial_Tarjeta_Estiba {
@@ -24,6 +24,6 @@ export class Historial_Tarjeta_Estiba {
     @Column()
     firma: string
 
-    @Column()
+    @PrimaryColumn()
     codigo_estiba: string
 }
