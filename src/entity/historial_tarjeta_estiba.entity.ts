@@ -1,9 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, CreateDateColumn } from "typeorm"
 
 @Entity()
 export class Historial_Tarjeta_Estiba {
 
-    @Column()
+    @CreateDateColumn()
     fecha: string
 
     @Column()

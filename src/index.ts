@@ -1,3 +1,5 @@
+import { FacturaController } from "./apis/factura";
+import { LoginController } from "./apis/login";
 import { UsuarioController } from "./apis/usuarios";
 import { AppDataSource } from "./data-source"
 import { Usuario } from "./entity/usuarios.entity"
@@ -25,9 +27,13 @@ AppDataSource.initialize().then(async () => {
     var routes = require('./url/url');
     // const inicio = require('./controllers/apis');
     const user_controller = new UsuarioController();
+    const login_controller = new LoginController();
+    const factura_controller = new FacturaController();
 
     // Cargamos las rutas
     app.use('/apis', user_controller.router);
+    app.use('/apis', login_controller.router);
+    app.use('/apis', factura_controller.router);
     // app.get('/apis', inicio.getApis);
 
     module.exports = app;

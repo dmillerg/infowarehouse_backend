@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, OneToOne, ManyToOne } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, OneToOne, ManyToOne, CreateDateColumn } from "typeorm"
 import { Factura } from "./facturas.entity"
 
 @Entity()
@@ -16,7 +16,7 @@ export class Informe_Recepcion {
     @Column()
     codigo: string
 
-    @Column()
+    @CreateDateColumn()
     fecha: string
 
     @Column()

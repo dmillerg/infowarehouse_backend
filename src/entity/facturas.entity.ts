@@ -1,18 +1,18 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, CreateDateColumn } from "typeorm"
 
 @Entity()
 export class Factura {
 
-    @PrimaryGeneratedColumn()
+    @Column()
     no_factura: string
 
     @Column()
     empresa: string
 
-    @Column()
+    @CreateDateColumn()
     fecha: string
 
-    @Column()
+    @PrimaryColumn()
     codigo: string
 
     @Column()
