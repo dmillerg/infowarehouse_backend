@@ -1,7 +1,7 @@
 import { type } from "os"
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
-import { Factura } from "./facturas"
-import { Producto } from "./producto"
+import { Factura } from "./facturas.entity"
+import { Producto } from "./producto.entity"
 
 @Entity()
 export class Factura_Producto {

@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, OneToOne, ManyToOne } from "typeorm"
-import { Factura } from "./facturas"
+import { Factura } from "./facturas.entity"
 
 @Entity()
 export class Informe_Recepcion {
