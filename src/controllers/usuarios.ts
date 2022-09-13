@@ -1,6 +1,6 @@
 import { Token } from '../entity/token.entity';
 import { Usuario } from '../entity/usuarios.entity';
-import { AppDataSource } from './../data-source'
+import { AppDataSource } from '../data-source'
 import { Router, Request, Response } from 'express'
 const bcrypt = require("bcrypt");
 

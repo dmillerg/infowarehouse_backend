@@ -1,4 +1,4 @@
-import { UsuarioController } from "../apis/usuarios";
+import { UsuarioController } from "../controllers/usuarios";
 // import app  from './../index'
 
 // Cargamos el módulo de express para poder crear rutas

@@ -1,5 +1,6 @@
 function getApis(req, res) {
-    const api = require('./../url/url');
+    const api = require('./../index');
+    console.log(api.route);
     const apis = [];
     var item = '';
     api.stack.forEach(element => {
