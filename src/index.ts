@@ -1,4 +1,5 @@
 import { FacturaController } from "./controllers/factura";
+import { FacturaProductoController } from "./controllers/factura_producto";
 import { LoginController } from "./controllers/login";
 import { UsuarioController } from "./controllers/usuarios";
 import { AppDataSource } from "./data-source"
@@ -29,11 +30,13 @@ AppDataSource.initialize().then(async () => {
     const user_controller = new UsuarioController();
     const login_controller = new LoginController();
     const factura_controller = new FacturaController();
+    const factura_producto_controller = new FacturaProductoController();
 
     // Cargamos las rutas
     app.use('/apis', user_controller.router);
     app.use('/apis', login_controller.router);
     app.use('/apis', factura_controller.router);
+    app.use('/apis', factura_producto_controller.router);
     app.get('/apis', inicio.getApis);
 
     module.exports = app;
