@@ -5,7 +5,7 @@ import { Historial_Tarjeta_Estiba } from '../entity/historial_tarjeta_estiba.ent
 import { Token } from '../entity/token.entity';
 const bcrypt = require("bcrypt");
 
-export class FacturaController {
+export class HistorialTarjetaEstibaController {
   public router: Router;
 
   constructor() {
