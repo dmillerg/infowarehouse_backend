@@ -65,8 +65,8 @@ export class FacturaController {
   }
 
   public routes() {
-    this.router.get('/facturas', this.getFactura);
-    this.router.delete('/facturas/:codigo', this.deleteFactura);
-    this.router.post('/facturas', this.saveFactura);
+    this.router.get('/factura', this.getFactura);
+    this.router.delete('/factura/:codigo', this.deleteFactura);
+    this.router.post('/factura', this.saveFactura);
   }
 }

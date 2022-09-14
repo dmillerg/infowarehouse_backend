@@ -86,8 +86,8 @@ export class UsuarioController {
   }
 
   public routes() {
-    this.router.post('/usuarios', this.saveUsuario);
-    this.router.get('/usuarios', this.getUsuarios);
+    this.router.post('/usuario', this.saveUsuario);
+    this.router.get('/usuario', this.getUsuarios);
     this.router.get('/usuario/:id', this.getUsuariosById);
     this.router.delete('/usuario/:id', this.deleteUsuariosById);
     this.router.put('/usuario/:id', this.updateUsuario);

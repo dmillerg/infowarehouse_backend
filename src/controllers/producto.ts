@@ -1,9 +1,7 @@
 import { Router, Request, Response } from 'express'
 import { AppDataSource } from '../data-source';
-import { Factura_Producto } from '../entity/facturas_productos.entity';
 import { Producto } from '../entity/producto.entity';
 import { Token } from '../entity/token.entity';
-const bcrypt = require("bcrypt");
 
 export class ProductoController {
   public router: Router;
@@ -89,7 +87,7 @@ export class ProductoController {
   }
 
   public routes() {
-    this.router.get('/productos', this.getProductos);
+    this.router.get('/producto', this.getProductos);
     this.router.post('/producto', this.saveProducto);
     this.router.delete('/producto', this.deleteProducto);
     this.router.put('/producto/:codigo', this.updateProducto);
