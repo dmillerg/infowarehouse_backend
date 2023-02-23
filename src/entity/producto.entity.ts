@@ -7,7 +7,10 @@ export class Producto {
     codigo: string
 
     @Column()
-    nombre: string
+    producto_generico: string
+
+    @Column()
+    producto_especifico: string
 
     @Column()
     descripcion: string

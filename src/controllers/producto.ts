@@ -22,10 +22,13 @@ export class ProductoController {
 
   public saveProducto = async (req: Request, res: Response) => {
     const token = req.query.token;
+    console.log(req.body);
+    
     const valid: any = await AppDataSource.manager.find(Token, { where: { token: token } });
     if (valid.length > 0) {
       const codigo = req.body.codigo;
-      const nombre = req.body.nombre;
+      const producto_generico = req.body.producto_generico;
+      const producto_especifico = req.body.producto_especifico;
       const descripcion = req.body.descripcion;
       const precio = req.body.precio;
       const precio_unitario = req.body.precio_unitario;
@@ -33,7 +36,8 @@ export class ProductoController {
       if (p.length == 0) {
         const pn = new Producto();
         pn.codigo = codigo;
-        pn.nombre = nombre;
+        pn.producto_generico = producto_generico;
+        pn.producto_especifico = producto_especifico;
         pn.descripcion = descripcion;
         pn.precio = precio;
         pn.precio_unitario = precio_unitario;
@@ -59,7 +63,8 @@ export class ProductoController {
     const token = req.query.token;
 
     const codigo = req.body.codigo;
-    const nombre = req.body.nombre;
+    const producto_generico = req.body.producto_generico;
+    const producto_especifico = req.body.producto_especifico;
     const descripcion = req.body.descripcion;
     const precio = req.body.precio;
     const precio_unitario = req.body.precio_unitario;
@@ -67,7 +72,8 @@ export class ProductoController {
     if (valid.length > 0) {
       await AppDataSource.manager.update(Producto, req.params.codigo, {
         codigo: codigo,
-        nombre: nombre,
+        producto_generico: producto_generico,
+        producto_especifico: producto_especifico,
         descripcion: descripcion,
         precio: precio,
         precio_unitario: precio_unitario

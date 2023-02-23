@@ -1,6 +1,7 @@
 import { FacturaController } from "./controllers/factura";
 import { FacturaProductoController } from "./controllers/factura_producto";
 import { HistorialTarjetaEstibaController } from "./controllers/historial_tarjeta_estiba";
+import { InformeController } from "./controllers/informe";
 import { LoginController } from "./controllers/login";
 import { ProductoController } from "./controllers/producto";
 import { TarjetaEstibaController } from "./controllers/tarjeta_estiba";
@@ -31,6 +32,7 @@ AppDataSource.initialize().then(async () => {
     var routes = require('./url/url');
     const inicio = require('./controllers/apis');
     const user_controller = new UsuarioController();
+    const informe_controller = new InformeController();
     const login_controller = new LoginController();
     const factura_controller = new FacturaController();
     const factura_producto_controller = new FacturaProductoController();
@@ -40,6 +42,7 @@ AppDataSource.initialize().then(async () => {
 
     // Cargamos las rutas
     app.use('/apis', user_controller.router);
+    app.use('/apis', informe_controller.router);
     app.use('/apis', login_controller.router);
     app.use('/apis', factura_controller.router);
     app.use('/apis', factura_producto_controller.router);

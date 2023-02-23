@@ -43,6 +43,8 @@ export class InformeController {
       const anno = req.body.anno;
       const no_anno = req.body.no_anno;
       const factura = req.body.factura;
+      console.log(req.body);
+      
       const ir = new Informe_Recepcion();
       ir.no = no;
       ir.empresa = empresa;
@@ -73,6 +75,6 @@ export class InformeController {
     this.router.post('/informe', this.saveInforme);
     this.router.get('/informe', this.getInforme);
     this.router.get('/informebyyear', this.getInformeByYear);
-    this.router.get('/informe', this.getLastNumber);
+    this.router.get('/tt', this.getLastNumber);
   }
 }

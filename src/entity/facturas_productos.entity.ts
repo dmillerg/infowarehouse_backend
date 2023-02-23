@@ -1,5 +1,5 @@
 import { type } from "os"
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm"
 import { Factura } from "./facturas.entity"
 import { Producto } from "./producto.entity"
 
@@ -9,10 +9,10 @@ export class Factura_Producto {
     @PrimaryGeneratedColumn()
     id: number
 
-    @ManyToOne(type => Factura)
+    @Column()
     no_factura: string
 
-    @ManyToOne(type => Producto)
+    @Column()
     codigo_producto: string
 
     @Column()

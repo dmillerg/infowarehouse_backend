@@ -25,7 +25,7 @@ export class Informe_Recepcion {
     @Column()
     entidad_suministradora: string
 
-    @OneToOne(type => Factura)
+    @Column()
     factura: string
 
     @Column()
