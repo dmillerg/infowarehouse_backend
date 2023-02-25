@@ -31,7 +31,7 @@ export class FacturaProductoController {
 
   public saveFacturaProducto = async (req: Request, res: Response) => {
     const token = req.body.token;
-    console.log('ddd', req.body);
+    console.log('factura producto', req.body);
     
     const valid: any = await AppDataSource.manager.find(Token, { where: { token: token } });
     if (valid.length > 0) {

@@ -22,7 +22,7 @@ export class ProductoController {
 
   public saveProducto = async (req: Request, res: Response) => {
     const token = req.query.token;
-    console.log(req.body);
+    console.log('producto', req.body);
     
     const valid: any = await AppDataSource.manager.find(Token, { where: { token: token } });
     if (valid.length > 0) {

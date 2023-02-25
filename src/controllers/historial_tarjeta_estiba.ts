@@ -43,6 +43,7 @@ export class HistorialTarjetaEstibaController {
 
   public saveHistorialTarjetaEstiba = async (req: Request, res: Response) => {
     const token = req.body.token;
+    console.log('Historial tarjeta estiba', req.body);
     const valid: any = await AppDataSource.manager.find(Token, { where: { token: token } });
     if (valid.length > 0) {
       const clave = req.body.clave;
@@ -54,7 +55,13 @@ export class HistorialTarjetaEstibaController {
       const codigo_estiba = req.body.codigo_estiba;
 
       const hte = await AppDataSource.manager.find(Historial_Tarjeta_Estiba);
-      saldo = hte.length > 0 ? Number(hte[hte.length - 1].saldo + entrada - salida) : entrada;
+      console.log(hte);
+      console.log(Number(hte[hte.length - 1]?.saldo));
+      console.log(Number(entrada));
+      console.log(Number(salida));
+      
+      
+      saldo = hte.length > 0 ? Number(hte[hte.length - 1].saldo) + Number(entrada) - Number(salida=='-'?0:salida) : entrada;
       const hte_n = new Historial_Tarjeta_Estiba();
 
       hte_n.clave = clave;
@@ -64,6 +71,8 @@ export class HistorialTarjetaEstibaController {
       hte_n.firma = firma;
       hte_n.saldo = saldo;
       hte_n.codigo_estiba = codigo_estiba;
+       console.log(hte_n);
+       
       await AppDataSource.manager.save(Historial_Tarjeta_Estiba, hte_n);
       return res.status(200).send({ message: 'Historial agreegado correctamente' });
 

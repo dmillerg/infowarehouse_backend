@@ -32,6 +32,7 @@ export class InformeController {
 
   public saveInforme = async (req: Request, res: Response) => {
     const token = req.query.token;
+    console.log('informe', req.body);
     const valid: any = await AppDataSource.manager.find(Token, { where: { token: token } });
     if (valid.length > 0) {
       const no = req.body.no;
