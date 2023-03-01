@@ -45,7 +45,7 @@ export class InformeController {
       const no_anno = req.body.no_anno;
       const factura = req.body.factura;
       console.log(req.body);
-      
+
       const ir = new Informe_Recepcion();
       ir.no = no;
       ir.empresa = empresa;
@@ -67,7 +67,10 @@ export class InformeController {
     const anno = req.query.anno;
     const valid: any = await AppDataSource.manager.find(Token, { where: { token: token } });
     if (valid.length > 0) {
-      return res.status(200).send(await AppDataSource.manager.find(Informe_Recepcion, { where: { anno: anno } }));
+      const informes = await AppDataSource.manager.find(Informe_Recepcion, { where: { anno: anno } });
+      const numero = informes.length > 0? Number(informes[informes.length-1].no) + 1: 1
+      const result = numero < 10 ? '0'+numero: numero.toString();
+      return res.status(200).send({no: result});
     }
     return res.status(401).send({ message: 'Usted no tiene acceso a este componente' });
   }
@@ -76,6 +79,6 @@ export class InformeController {
     this.router.post('/informe', this.saveInforme);
     this.router.get('/informe', this.getInforme);
     this.router.get('/informebyyear', this.getInformeByYear);
-    this.router.get('/tt', this.getLastNumber);
+    this.router.get('/lastinforme', this.getLastNumber);
   }
 }
