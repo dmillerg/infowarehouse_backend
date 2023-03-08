@@ -21,7 +21,7 @@ export class FacturaProductoController {
         .select('prod.*')
         .addSelect('fp.cantidad as cantidad')
         .innerJoin(Factura_Producto, 'fp', 'prod.codigo = fp.codigo_producto')
-        .where(`fp.no_factura=${req.query.no_factura}`)
+        .where(`fp.no_factura="${req.query.no_factura}"`)
         .getRawMany();
       return res.status(200).send(fp);
 

@@ -3,6 +3,9 @@ import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, CreateDateColumn
 @Entity()
 export class Historial_Tarjeta_Estiba {
 
+    @PrimaryGeneratedColumn()
+    id: number
+
     @CreateDateColumn()
     fecha: string
 
@@ -24,6 +27,8 @@ export class Historial_Tarjeta_Estiba {
     @Column()
     firma: string
 
-    @PrimaryColumn()
+    @Column()
     codigo_estiba: string
+
+
 }

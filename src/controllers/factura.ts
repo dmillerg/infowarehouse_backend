@@ -65,8 +65,19 @@ export class FacturaController {
     return res.status(401).send({ message: 'Usted no tiene acceso a este componente' });
   }
 
+  public getFacturaByNo = async (req: Request, res: Response) => {
+    const token = req.query.token;
+    const valid: any = await AppDataSource.manager.find(Token, { where: { token: token } });
+    if (valid.length > 0) {
+      const fact = await AppDataSource.manager.find(Factura, { where: { no_factura: req.params.no_factura } });
+      return res.status(200).send(fact[0])
+    }
+    return res.status(401).send({ message: 'Usted no tiene acceso a este componente' });
+  }
+
   public routes() {
     this.router.get('/factura', this.getFactura);
+    this.router.get('/factura/:no_factura', this.getFactura);
     this.router.delete('/factura/:codigo', this.deleteFactura);
     this.router.post('/factura', this.saveFactura);
   }

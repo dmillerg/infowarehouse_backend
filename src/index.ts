@@ -15,7 +15,7 @@ const cors = require('cors');
 const fileUpload = require('express-fileupload');
 
 const app = express();
-const port = 9706;
+const port = 9707;
 
 AppDataSource.initialize().then(async () => {
 
@@ -50,6 +50,10 @@ AppDataSource.initialize().then(async () => {
     app.use('/apis', tarjeta_estiba_controller.router);
     app.use('/apis', historial_tarjeta_estiba_controller.router);
     app.get('/apis', inicio.getApis);
+    app.get('/apiss', function(){
+        console.log('asdasd');
+        
+    });
 
     module.exports = app;
 
