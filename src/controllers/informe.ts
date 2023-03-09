@@ -68,11 +68,22 @@ export class InformeController {
     const valid: any = await AppDataSource.manager.find(Token, { where: { token: token } });
     if (valid.length > 0) {
       const informes = await AppDataSource.manager.find(Informe_Recepcion, { where: { anno: anno } });
-      const numero = informes.length > 0? Number(informes[informes.length-1].no) + 1: 1
-      const result = numero < 10 ? '0'+numero: numero.toString();
-      return res.status(200).send({no: result});
+      const numero = informes.length > 0 ? Number(informes[informes.length - 1].no) + 1 : 1
+      const result = numero < 10 ? '0' + numero : numero.toString();
+      return res.status(200).send({ no: result });
     }
     return res.status(401).send({ message: 'Usted no tiene acceso a este componente' });
+  }
+
+  public getInformeByFactura = async (req: Request, res: Response) => {
+    const token = req.query.token;
+    const codigo = req.params.codigo;
+    const valid: any = await AppDataSource.manager.find(Token, { where: { token: token } });
+    if (valid.length > 0) {
+      const informe = await AppDataSource.manager.find(Informe_Recepcion, { where: { codigo: codigo } });
+      return res.status(200).send(informe[0]);
+    } else
+      return res.status(401).send({ message: 'Usted no tiene acceso a este componente' })
   }
 
   public routes() {
@@ -80,5 +91,6 @@ export class InformeController {
     this.router.get('/informe', this.getInforme);
     this.router.get('/informebyyear', this.getInformeByYear);
     this.router.get('/lastinforme', this.getLastNumber);
+    this.router.get('/informe/:codigo', this.getInformeByFactura);
   }
 }

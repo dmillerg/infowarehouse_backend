@@ -4,7 +4,7 @@ import { Factura } from "./facturas.entity"
 @Entity()
 export class Informe_Recepcion {
 
-    @PrimaryColumn()
+    @Column()
     no: number
 
     @Column()
@@ -31,6 +31,6 @@ export class Informe_Recepcion {
     @Column()
     anno: string
 
-    @Column()
+    @PrimaryColumn()
     no_anno: string
 }
